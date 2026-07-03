@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect x="16" y="16" width="992" height="992" rx="232" fill="#F5F2E0" stroke="#1C1F1C" stroke-width="14"/>
+  <g transform="translate(512 512) scale(1.14) translate(-512 -512)">
+    <circle cx="350" cy="350" r="150" fill="#F2990F" stroke="#1C1F1C" stroke-width="16"/>
+    <circle cx="350" cy="350" r="76" fill="#F6BB55" stroke="#1C1F1C" stroke-width="14"/>
+    <circle cx="674" cy="674" r="150" fill="#057A6E" stroke="#1C1F1C" stroke-width="16"/>
+    <circle cx="674" cy="674" r="76" fill="#24D1B8" stroke="#1C1F1C" stroke-width="14"/>
+    <path d="M 566 240 L 656 240 Q 700 240 700 284 L 700 372" fill="none"
+          stroke="#1C1F1C" stroke-width="30" stroke-linecap="round"/>
+    <path d="M 662 372 L 738 372 L 700 442 Z" fill="#1C1F1C" stroke="#1C1F1C" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M 240 566 L 240 656 Q 240 700 284 700 L 372 700" fill="none"
+          stroke="#1C1F1C" stroke-width="30" stroke-linecap="round"/>
+    <path d="M 372 662 L 372 738 L 442 700 Z" fill="#1C1F1C" stroke="#1C1F1C" stroke-width="10" stroke-linejoin="round"/>
+  </g>
+</svg>
