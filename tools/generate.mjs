@@ -102,8 +102,8 @@ const footerHtml = `
 
 function page(inp, out, reason) {
   const url = `${ORIGIN}/${slug(inp.key, out.key)}`;
-  const title = `Convert ${inp.name} to ${out.name} on Mac — Free & Private | PrivateRemix`;
-  const desc = `Convert ${inp.name} to ${out.name} on your Mac, free. ${reason} Every conversion is 100% local — nothing is uploaded. No cloud, no tracking.`;
+  const title = `Convert ${inp.name} to ${out.name} on Mac — Fast & Private | PrivateRemix`;
+  const desc = `Convert ${inp.name} to ${out.name} right on your Mac. ${reason} Every conversion is 100% local — nothing is uploaded. No cloud, no tracking.`;
   const h1 = `Convert ${inp.name} to ${out.name} on Mac`;
   const faqs = buildFaqs(inp, out);
   const rel = related(inp, out);
@@ -173,7 +173,7 @@ ${navHtml}
         <a class="btn btn-green" href="#" data-download>Download on the Mac App Store</a>
         <a class="btn btn-ghost" href="/convert">See all conversions</a>
       </div>
-      <p class="note">macOS 14 or later · Apple silicon · Free to try</p>
+      <p class="note">macOS 14 or later · Apple silicon · One-time purchase</p>
     </div>
   </header>
 
@@ -228,7 +228,7 @@ ${navHtml}
 
   <section class="band">
     <h2>Convert ${inp.name} to ${out.name} now</h2>
-    <p>Free to try. macOS 14 or later, Apple silicon.</p>
+    <p>One-time purchase — no subscription. macOS 14 or later, Apple silicon.</p>
     <div class="cta-row">
       <a class="btn btn-amber" href="#" data-download>Download on the Mac App Store</a>
     </div>
@@ -255,7 +255,7 @@ function hubPage() {
         </div>
       </div>`;
   }).join("\n");
-  const title = "All File Conversions for Mac — Free & Private | PrivateRemix";
+  const title = "All File Conversions for Mac — Fast & Private | PrivateRemix";
   const desc = `Every file conversion PrivateRemix supports on Mac — ${CATALOG.length} image, video and audio conversions, all 100% local. Nothing is ever uploaded.`;
   return `<!DOCTYPE html>
 <html lang="en">
