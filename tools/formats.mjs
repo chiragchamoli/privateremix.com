@@ -1,6 +1,6 @@
 // Per-format knowledge. Drives unique per-page copy and FAQs so pages are not
 // one-word swaps of each other. Keyed by lowercase extension.
-// lossy: true (lossy), false (lossless), null (n/a — vector/document/container).
+// lossy: true (lossy), false (lossless), null (n/a — vector/container).
 
 export const FORMATS = {
   heic: { name: "HEIC", full: "High Efficiency Image Container", kind: "image", lossy: true,
@@ -87,45 +87,6 @@ export const FORMATS = {
   amr: { name: "AMR", full: "Adaptive Multi-Rate audio", kind: "audio", lossy: true,
     what: "a low-bitrate format used for old phone voice recordings",
     faq: { q: "Why convert AMR recordings?", a: "AMR is a legacy mobile voice format most modern apps can't open. Converting to MP3 makes old voice recordings playable anywhere." } },
-
-  pdf: { name: "PDF", full: "Portable Document Format", kind: "document", lossy: null,
-    what: "the universal fixed-layout document format",
-    faq: { q: "Will the layout stay the same in a PDF?", a: "Yes — that's the point of PDF. It locks fonts, images and layout so the document looks identical on every device." } },
-  docx: { name: "Word", full: "Microsoft Word document", kind: "document", lossy: null,
-    what: "Microsoft Word's editable document format",
-    faq: { q: "Can I edit the text after converting to Word?", a: "Yes. Converting to Word (.docx) produces an editable document you can change in Word, Pages or Google Docs. Complex layouts may need minor tidying." } },
-  xlsx: { name: "Excel", full: "Microsoft Excel workbook", kind: "document", lossy: null,
-    what: "Microsoft Excel's spreadsheet format",
-    faq: { q: "How well are tables extracted into Excel?", a: "Clearly structured tables convert cleanly into rows and columns. Very complex or scanned tables may need a quick review after conversion." } },
-  pptx: { name: "PowerPoint", full: "Microsoft PowerPoint presentation", kind: "document", lossy: null,
-    what: "Microsoft PowerPoint's slide format",
-    faq: { q: "Does each PDF page become a slide?", a: "Yes. Pages map to editable slides so you can rework a document as a presentation in PowerPoint or Keynote." } },
-  epub: { name: "EPUB", full: "Electronic Publication", kind: "document", lossy: null,
-    what: "the open e-book standard used by most e-readers",
-    faq: { q: "What reads EPUB files?", a: "Apple Books, Google Play Books, Kobo and most e-readers open EPUB. It reflows text to fit any screen size." } },
-  mobi: { name: "MOBI", full: "Mobipocket e-book", kind: "document", lossy: null,
-    what: "an older Amazon Kindle e-book format",
-    faq: { q: "Is MOBI still supported?", a: "Amazon has retired MOBI in favour of newer formats. Converting to EPUB keeps your books readable on modern e-readers." } },
-  azw3: { name: "AZW3", full: "Kindle Format 8", kind: "document", lossy: null,
-    what: "Amazon's Kindle e-book format",
-    faq: { q: "Can I read AZW3 books outside a Kindle?", a: "Not easily. Converting to PDF makes a Kindle book readable on any computer, phone or tablet." } },
-  rtf: { name: "RTF", full: "Rich Text Format", kind: "document", lossy: null,
-    what: "a portable rich-text document format",
-    faq: { q: "Why convert RTF to PDF?", a: "RTF can render slightly differently across apps. Converting to PDF locks the formatting so it looks identical for everyone you send it to." } },
-  ttf: { name: "TTF", full: "TrueType Font", kind: "document", lossy: null,
-    what: "a standard desktop font format",
-    faq: { q: "Why convert a font to WOFF?", a: "WOFF (Web Open Font Format) is compressed and optimised for websites, loading faster than raw TTF fonts on the web." } },
-  woff: { name: "WOFF", full: "Web Open Font Format", kind: "document", lossy: null, what: "the compressed font format built for the web" },
-  csv: { name: "CSV", full: "Comma-Separated Values", kind: "document", lossy: null,
-    what: "a plain-text format for tabular data",
-    faq: { q: "Why convert CSV to Excel?", a: "CSV holds raw data with no formatting or formulas. Converting to XLSX gives you a real spreadsheet with proper columns you can style and calculate on." } },
-  rar: { name: "RAR", full: "RAR archive", kind: "document", lossy: null,
-    what: "a proprietary compressed archive format",
-    faq: { q: "Why convert RAR to ZIP?", a: "RAR needs special software to open, while ZIP is supported natively on Mac and Windows. Converting makes the archive open with a double-click anywhere." } },
-  zip: { name: "ZIP", full: "ZIP archive", kind: "document", lossy: null, what: "the universally supported compressed archive format" },
-  odt: { name: "ODT", full: "OpenDocument Text", kind: "document", lossy: null,
-    what: "the OpenOffice / LibreOffice document format",
-    faq: { q: "Why convert ODT to PDF?", a: "ODT can shift layout between apps. Converting to PDF fixes the formatting so the document looks the same for every recipient." } },
 };
 
 // The authoritative catalog, mirrored from
@@ -166,18 +127,4 @@ export const CATALOG = [
   ["aac", "mp3", "Convert standard iTunes or Apple Music files into universally supported tracks."],
   ["m4a", "wav", "Extract high-quality, uncompressed audio from Apple Voice Memos."],
   ["amr", "mp3", "Convert older, low-quality voice recordings from legacy mobile phones."],
-  ["pdf", "docx", "Make documents editable."],
-  ["pdf", "xlsx", "Extract data tables from locked documents."],
-  ["jpg", "pdf", "Turn images into a document format."],
-  ["epub", "pdf", "Make e-books printable or easily shareable."],
-  ["docx", "pdf", "Lock formatting for document sharing."],
-  ["pdf", "jpg", "Extract document pages as individual images."],
-  ["pdf", "pptx", "Convert a document layout into an editable slide presentation."],
-  ["mobi", "epub", "Convert older Amazon Kindle books to open-standard e-reader formats."],
-  ["azw3", "pdf", "Make modern Kindle files readable on any computer or device."],
-  ["rtf", "pdf", "Lock the formatting of Rich Text Files before emailing."],
-  ["ttf", "woff", "Convert standard desktop fonts into Web Open Font Format for web design."],
-  ["csv", "xlsx", "Convert raw comma-separated data into a formatted spreadsheet."],
-  ["rar", "zip", "Convert a proprietary archive format into a universally supported compressed folder."],
-  ["odt", "pdf", "Lock OpenOffice or LibreOffice documents into fixed layouts for distribution."],
 ];

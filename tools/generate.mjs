@@ -9,11 +9,15 @@ import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ORIGIN = "https://privateremix.com";
-const CAT_LABEL = { image: "Images", video: "Video", audio: "Audio", document: "Documents" };
+const CAT_LABEL = { image: "Images", video: "Video", audio: "Audio" };
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const slug = (i, o) => `convert-${i}-to-${o}-mac`;
-const fmt = (ext) => FORMATS[ext] || { name: ext.toUpperCase(), full: ext.toUpperCase(), kind: "document", lossy: null, what: `a ${ext.toUpperCase()} file` };
+const fmt = (ext) => {
+  const known = FORMATS[ext];
+  if (!known) throw new Error(`Unknown format in CATALOG: ${ext}`);
+  return known;
+};
 
 function qualityFaq(inp, out) {
   const q = `Will I lose quality converting ${inp.name} to ${out.name}?`;
@@ -21,9 +25,9 @@ function qualityFaq(inp, out) {
   if (out.lossy === false) {
     a = `No. ${out.name} is a lossless format, so no image or audio detail is discarded in the conversion.`;
   } else if (out.lossy === true && inp.lossy === false) {
-    a = `${out.name} is a compressed format, so there is a small, usually imperceptible quality trade-off in exchange for a much smaller file. PrivateRemix converts at a high quality setting to keep it minimal.`;
+    a = `${out.name} is a compressed format, so there is a small, usually imperceptible quality trade-off in exchange for a much smaller file. PrivateRemix lets you pick the balance — Smaller file, Balanced, or Best quality.`;
   } else if (out.lossy === true) {
-    a = `The change is minimal. Both formats are compressed, and PrivateRemix converts at a high quality setting so there is no visible or audible drop for everyday use.`;
+    a = `The change is minimal. Both formats are compressed, and you choose the size-versus-quality balance — Smaller file, Balanced, or Best quality — so everyday use shows no visible or audible drop.`;
   } else {
     a = `PrivateRemix preserves your content faithfully during the conversion. Text, images and layout are carried across as cleanly as the formats allow.`;
   }
@@ -236,7 +240,7 @@ ${footerHtml}
 }
 
 function hubPage() {
-  const byCat = { image: [], video: [], audio: [], document: [] };
+  const byCat = { image: [], video: [], audio: [] };
   for (const [i, o, r] of CATALOG) byCat[fmt(i).kind].push([i, o, r]);
   const sections = Object.entries(byCat).map(([cat, items]) => {
     const cards = items.map(([i, o, r]) => {
@@ -252,7 +256,7 @@ function hubPage() {
       </div>`;
   }).join("\n");
   const title = "All File Conversions for Mac — Free & Private | PrivateRemix";
-  const desc = `Every file conversion PrivateRemix supports on Mac — ${CATALOG.length} image, video, audio and document conversions, all 100% local. Nothing is ever uploaded.`;
+  const desc = `Every file conversion PrivateRemix supports on Mac — ${CATALOG.length} image, video and audio conversions, all 100% local. Nothing is ever uploaded.`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -276,7 +280,7 @@ ${navHtml}
     <div class="wrap">
       <span class="kicker">The catalog</span>
       <h1>Every conversion PrivateRemix does</h1>
-      <p class="lede">${CATALOG.length} conversions across images, video, audio and documents — every one runs locally on your Mac.</p>
+      <p class="lede">${CATALOG.length} conversions across images, video and audio — every one runs locally on your Mac.</p>
       <div class="cta-row" id="download">
         <a class="btn btn-green" href="#" data-download>Download on the Mac App Store</a>
       </div>
